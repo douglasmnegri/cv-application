@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Container from "./html_components/Container";
 
 import PersonalDetails from "./ProfileInfo";
 
@@ -6,12 +7,12 @@ function SignUpForm() {
   return (
     <div>
       <h1>Personal Information</h1>
-      <div className="border-2 border-gray-300 bg-gray-800 bg-opacity-80 w-[800px] h-[600px] shadow-md">
+      <Container>
         <div className="flex justify-around m-2 p-2 gap-2">
           <div className="personal-details">
             <PersonalDetails
               title="Full Name"
-              placeholder="Douglas"
+              placeholder="John Doe"
               type="text"
               width="w-[350px]"
             />
@@ -42,7 +43,17 @@ function SignUpForm() {
             width="w-[740px]"
           />
         </div>
-      </div>
+        <div className="flex flex-col ml-5 p-2 gap-2">
+          <label htmlFor="career-summary" className="text-white">
+            Describe your professional experience
+          </label>
+          <textarea
+            id="career-summary"
+            placeholder="Describe your career journey..."
+            className="border-2 border-gray-300 bg-black bg-opacity-90 w-[740px] h-[150px] p-2 text-white"
+          />
+        </div>
+      </Container>
     </div>
   );
 }
