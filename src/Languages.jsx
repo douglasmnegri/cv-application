@@ -2,11 +2,9 @@ import { useState } from "react";
 import Container from "./html_components/Container";
 import { v4 as uuidv4 } from "uuid";
 
-function ChooseLanguages() {
+function ChooseLanguages({ onSave }) {
   const [language, setLanguage] = useState("");
   const [proficiency, setProficiency] = useState("");
-  const [saveLang, setSaveLang] = useState([]);
-  // const [deleteLang, setDeleteLang] = useState("");
 
   function handleLanguageChange(e) {
     setLanguage(e.target.value);
@@ -16,18 +14,25 @@ function ChooseLanguages() {
     setProficiency(e.target.value);
   }
 
-  function handleSaveLangagues() {
-    const newLang = {
-      id: uuidv4(),
-      language,
-      proficiency,
-    };
-
-    setSaveLang((prevSaveLang) => [...prevSaveLang, newLang]);
+  function handleSaveLanguages() {
+    if (language && proficiency) {
+      const newLang = {
+        id: uuidv4(),
+        language,
+        proficiency,
+      };
+      onSave(newLang);
+      setLanguage("");
+      setProficiency("");
+    }
   }
 
   return (
-    <div className="flex justify-around align-bottom border-2 border-solid m-4 p-4 items-end">
+    <div
+      className="flex justify-around align-bottom border-b-2
+
+ m-4 p-4 items-end"
+    >
       <div className="flex flex-col">
         <label>
           Language
@@ -61,41 +66,67 @@ function ChooseLanguages() {
       <div className="flex items-end">
         <button
           className="border p-2 m-2 bg-green-500 text-white rounded"
-          onClick={handleSaveLangagues}
+          onClick={handleSaveLanguages}
         >
-          Save
-        </button>
-        <button className="border p-2 m-2 bg-red-500 text-white rounded">
-          Delete
+          Add Language
         </button>
       </div>
     </div>
   );
 }
 
-function Languages() {
-  const [addField, setAddField] = useState([]);
+function SavedLanguage({ language, proficiency, id, onDelete }) {
+  return (
+    <>
+      <div className="flex justify-start align-bottom m-12 items-end">
+        <div className="flex flex-col mr-4 w-[250px]">
+          <p>
+            <strong>Language:</strong> {language}
+          </p>
+          <p>
+            <strong>Proficiency:</strong> {proficiency}
+          </p>
+        </div>
+        <div>
+          <button
+            className="border p-2 m-2 bg-red-500 text-white rounded"
+            onClick={() => onDelete(id)}
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </>
+  );
+}
 
-  function handleAddLanguage() {
-    setAddField((prevAddField) => [
-      ...prevAddField,
-      <ChooseLanguages key={prevAddField.length} />,
-    ]);
+function Languages() {
+  const [savedLanguages, setSavedLanguages] = useState([]);
+
+  function handleSaveLanguage(newLang) {
+    setSavedLanguages((prevSavedLanguages) => [...prevSavedLanguages, newLang]);
   }
+
+  function handleDeleteLanguage(id) {
+    setSavedLanguages((prevSavedLanguages) =>
+      prevSavedLanguages.filter((lang) => lang.id !== id)
+    );
+  }
+
   return (
     <>
       <h1>Languages</h1>
       <Container>
-        <ChooseLanguages />
-        {addField}
-        <div className="flex justify-center align-middle">
-          <button
-            className="border bg-gray-300 text-black rounded"
-            onClick={handleAddLanguage}
-          >
-            +
-          </button>
-        </div>
+        <ChooseLanguages onSave={handleSaveLanguage} />
+        {savedLanguages.map(({ id, language, proficiency }) => (
+          <SavedLanguage
+            key={id}
+            id={id}
+            language={language}
+            proficiency={proficiency}
+            onDelete={handleDeleteLanguage}
+          />
+        ))}
       </Container>
     </>
   );
