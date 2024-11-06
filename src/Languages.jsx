@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Container from "./html_components/Container";
-import { v4 as uuidv4 } from "uuid"; 
+import { v4 as uuidv4 } from "uuid";
 
 function ChooseLanguages() {
   const [language, setLanguage] = useState("");
   const [proficiency, setProficiency] = useState("");
+  const [saveLang, setSaveLang] = useState([]);
+  // const [deleteLang, setDeleteLang] = useState("");
 
   function handleLanguageChange(e) {
     setLanguage(e.target.value);
@@ -12,7 +14,16 @@ function ChooseLanguages() {
 
   function handleProficiencyChange(e) {
     setProficiency(e.target.value);
-    console.log(proficiency);
+  }
+
+  function handleSaveLangagues() {
+    const newLang = {
+      id: uuidv4(),
+      language,
+      proficiency,
+    };
+
+    setSaveLang((prevSaveLang) => [...prevSaveLang, newLang]);
   }
 
   return (
@@ -48,7 +59,10 @@ function ChooseLanguages() {
         </label>
       </div>
       <div className="flex items-end">
-        <button className="border p-2 m-2 bg-green-500 text-white rounded">
+        <button
+          className="border p-2 m-2 bg-green-500 text-white rounded"
+          onClick={handleSaveLangagues}
+        >
           Save
         </button>
         <button className="border p-2 m-2 bg-red-500 text-white rounded">
@@ -60,14 +74,27 @@ function ChooseLanguages() {
 }
 
 function Languages() {
+  const [addField, setAddField] = useState([]);
+
+  function handleAddLanguage() {
+    setAddField((prevAddField) => [
+      ...prevAddField,
+      <ChooseLanguages key={prevAddField.length} />,
+    ]);
+  }
   return (
     <>
       <h1>Languages</h1>
       <Container>
-        <div className="flex flex-col justify-between">
-          <ChooseLanguages />
-          <ChooseLanguages />
-          <ChooseLanguages />
+        <ChooseLanguages />
+        {addField}
+        <div className="flex justify-center align-middle">
+          <button
+            className="border bg-gray-300 text-black rounded"
+            onClick={handleAddLanguage}
+          >
+            +
+          </button>
         </div>
       </Container>
     </>
