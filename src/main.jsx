@@ -1,11 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.jsx";
 import "@fontsource/roboto";
+import ToggleComponents from "./html_components/Button";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
+    <ToggleComponents />
   </StrictMode>
 );
