@@ -1,8 +1,8 @@
-import ComponentTwo from "../Languages";
+import Languages from "../Languages";
 import SignUpForm from "../App";
 import { useState } from "react";
 
-const components = [SignUpForm, ComponentTwo];
+const components = [SignUpForm, Languages];
 export default function ToggleComponents() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const handleNext = () => {
@@ -20,9 +20,7 @@ export default function ToggleComponents() {
       <CurrentComponent />
       <button
         onClick={() =>
-          currentIndex === 0
-            ? console.log("Button Disabled")
-            : handlePrevious()
+          currentIndex === 0 ? console.log("Button Disabled") : handlePrevious()
         }
         className="m-4"
       >
@@ -35,7 +33,6 @@ export default function ToggleComponents() {
             : handleNext()
         }
         disabled={currentIndex === components.length - 1}
-        className="mt-4 p-2 bg-blue-500 text-white rounded"
       >
         Next Component
       </button>
