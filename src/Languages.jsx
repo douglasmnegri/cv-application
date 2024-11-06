@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Container from "./html_components/Container";
+import { v4 as uuidv4 } from "uuid"; 
 
 function ChooseLanguages() {
   const [language, setLanguage] = useState("");
@@ -15,32 +16,45 @@ function ChooseLanguages() {
   }
 
   return (
-    <div>
-      <label>
-        Language
-        <input
-          type="text"
-          name="language"
-          value={language}
-          onChange={handleLanguageChange}
-          className="block border border-gray-300 p-2 mt-1"
-        />
-      </label>
-      <label>
-        Proficiency
-        <select
-          name="proficiency"
-          value={proficiency}
-          onChange={handleProficiencyChange}
-          className="block border border-gray-300 p-2 mt-1 text-black"
-        >
-          <option value="">Select Proficiency</option>
-          <option value="Beginner">Beginner</option>
-          <option value="Intermediate">Intermediate</option>
-          <option value="Advanced">Advanced</option>
-          <option value="Fluent">Fluent</option>
-        </select>
-      </label>
+    <div className="flex justify-around align-bottom border-2 border-solid m-4 p-4 items-end">
+      <div className="flex flex-col">
+        <label>
+          Language
+          <input
+            type="text"
+            name="language"
+            value={language}
+            placeholder="English"
+            onChange={handleLanguageChange}
+            className="block border border-gray-300 p-2 mt-1"
+          />
+        </label>
+      </div>
+      <div className="flex flex-col">
+        <label>
+          Proficiency
+          <select
+            name="proficiency"
+            value={proficiency}
+            onChange={handleProficiencyChange}
+            className="block border border-gray-300 p-2 mt-1 text-black"
+          >
+            <option value="">Select Proficiency</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+            <option value="Fluent">Fluent</option>
+          </select>
+        </label>
+      </div>
+      <div className="flex items-end">
+        <button className="border p-2 m-2 bg-green-500 text-white rounded">
+          Save
+        </button>
+        <button className="border p-2 m-2 bg-red-500 text-white rounded">
+          Delete
+        </button>
+      </div>
     </div>
   );
 }
@@ -51,6 +65,8 @@ function Languages() {
       <h1>Languages</h1>
       <Container>
         <div className="flex flex-col justify-between">
+          <ChooseLanguages />
+          <ChooseLanguages />
           <ChooseLanguages />
         </div>
       </Container>
