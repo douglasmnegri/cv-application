@@ -1,9 +1,9 @@
 import Languages from "../Languages";
 import SignUpForm from "../App";
-import Education from "../Education";
+import WorkExperience from "../WorkExperience";
 import { useState } from "react";
 
-const components = [SignUpForm, Languages, Education];
+const components = [SignUpForm, Languages, WorkExperience];
 export default function ToggleComponents() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const handleNext = () => {
