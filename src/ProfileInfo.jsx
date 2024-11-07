@@ -8,6 +8,7 @@ export default function PersonalDetails({ title, placeholder, type, width }) {
   }
 
   return (
+    <div className="mb-4">
     <label className="text-l">
       {title}
       <input
@@ -18,5 +19,6 @@ export default function PersonalDetails({ title, placeholder, type, width }) {
         className={`border-solid border-white border-2 block p-2 ${width || "w-[350px]"}`}
         />
     </label>
+    </div>
   );
 }
