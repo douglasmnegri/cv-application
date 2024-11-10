@@ -70,18 +70,34 @@ function WorkFields() {
       <div className="mt-4">
         <h2>Saved Experiences:</h2>
         {saveExperience.map((field, index) => (
-          <PrintJobs key={index} position={field.position} company={field.company} />
+          <PrintJobs
+            key={index}
+            position={field.position}
+            company={field.company}
+            employmentDate={
+              field.endDate == ""
+                ? field.startDate + " (Currently Working)"
+                : field.startDate + " - " + field.endDate
+            }
+          />
         ))}
       </div>
     </>
   );
 }
 
-function PrintJobs({ position, company }) {
+function PrintJobs({ position, company, employmentDate }) {
   return (
     <div className="border-2 border-solid border-white bg-white text-black p-2 mb-2">
-      <p><strong>Position:</strong> {position}</p>
-      <p><strong>Company:</strong> {company}</p>
+      <p>
+        <strong>Position:</strong> {position}
+      </p>
+      <p>
+        <strong>Company:</strong> {company}
+      </p>
+      <p>
+        <strong>Period of Employment:</strong> {employmentDate}
+      </p>
     </div>
   );
 }
