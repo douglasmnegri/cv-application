@@ -23,10 +23,9 @@ const educationFields = [
   },
 ];
 
-
 function EducationFields() {
-    // We're able to refactor the functions below to become reusable in multiple files
-    
+  // We're able to refactor the functions below to become reusable in multiple files
+
   const [fields, setsFields] = useState({
     school: "",
     startDate: "",
@@ -46,6 +45,12 @@ function EducationFields() {
 
   function handleEducation() {
     setSaveEducation((prevEducation) => [...prevEducation, fields]);
+    setsFields({
+      school: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+    });
     console.log(saveEducation);
   }
   return (
@@ -63,7 +68,7 @@ function EducationFields() {
                 <input
                   type={content.type}
                   name={content.name}
-                  //   value={fields[content.name]}
+                  value={fields[content.name]}
                   placeholder={content.placeholder}
                   onChange={handleInputFields}
                   className="block border border-gray-300 p-2 mt-1 w-[350px]"
@@ -80,8 +85,42 @@ function EducationFields() {
             </button>
           </div>
         </div>
+
+        <div className={`m4 ${saveEducation.length < 1 ? "hidden" : "block"}`}>
+          <h2>Saved Education</h2>
+          <div className="flex flex-wrap justify-evenly">
+            {saveEducation.map((field, index) => (
+              <PrintSchools
+                key={index}
+                school={field.school}
+                location={field.location}
+                date={
+                  field.endDate == ""
+                    ? field.startDate + " (In progress)"
+                    : field.startDate + " - " + field.endDate
+                }
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </>
+  );
+}
+
+function PrintSchools({ school, date, location }) {
+  return (
+    <div className="border-2 border-solid border-white bg-white text-black mb-2  m-4 p-4">
+      <p>
+        <strong>Institution:</strong> {school}
+      </p>
+      <p>
+        <strong>Date:</strong> {date}
+      </p>
+      <p>
+        <strong>Location:</strong> {location}
+      </p>
+    </div>
   );
 }
 
