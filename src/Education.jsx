@@ -1,13 +1,53 @@
 import { useState } from "react";
 import Container from "./html_components/Container";
 
+const educationFields = [
+  {
+    label: "School / University",
+    type: "text",
+    name: "school",
+    placeholder: "Federal University of Santa Catarina",
+  },
+  {
+    label: "Start Date",
+    type: "number",
+    name: "startDate",
+    placeholder: "2018",
+  },
+  { label: "End Date", type: "number", name: "endDate", placeholder: "2024" },
+  {
+    label: "Location",
+    type: "text",
+    name: "location",
+    placeholder: "Florianópolis",
+  },
+];
+
+
 function EducationFields() {
-  const educationFields = [
-    { label: "School / University", type: "text", name: "school" },
-    { label: "Start Date", type: "number", name: "startDate" },
-    { label: "End Date", type: "number", name: "endDate" },
-    { label: "Location", type: "text", name: "location" },
-  ];
+    // We're able to refactor the functions below to become reusable in multiple files
+    
+  const [fields, setsFields] = useState({
+    school: "",
+    startDate: "",
+    endDate: "",
+    location: "",
+  });
+
+  const [saveEducation, setSaveEducation] = useState([]);
+
+  function handleInputFields(e) {
+    const { name, value } = e.target;
+    setsFields((prevFields) => ({
+      ...prevFields,
+      [name]: value,
+    }));
+  }
+
+  function handleEducation() {
+    setSaveEducation((prevEducation) => [...prevEducation, fields]);
+    console.log(saveEducation);
+  }
   return (
     <>
       <div>
@@ -23,17 +63,23 @@ function EducationFields() {
                 <input
                   type={content.type}
                   name={content.name}
+                  //   value={fields[content.name]}
+                  placeholder={content.placeholder}
+                  onChange={handleInputFields}
                   className="block border border-gray-300 p-2 mt-1 w-[350px]"
                 />
               </label>
             </div>
           ))}
+          <div className="col-start-2 w-[350px] flex justify-end">
+            <button
+              className="border mt-2 bg-green-500 text-white rounded"
+              onClick={handleEducation}
+            >
+              Save School
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="flex items-end">
-        <button className="border p-2 m-2 bg-green-500 text-white rounded">
-          Add Language
-        </button>
       </div>
     </>
   );

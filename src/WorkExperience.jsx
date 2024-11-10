@@ -40,8 +40,8 @@ function WorkFields() {
   }
 
   return (
-    <>
-      <div className="flex flex-start m-4">
+    <div className="flex gap-16">
+      <div className="flex m-4">
         <div>
           {workFields.map((content, index) => (
             <label key={index}>
@@ -67,8 +67,8 @@ function WorkFields() {
       </div>
 
       {/* Render saved experiences */}
-      <div className="mt-4">
-        <h2>Saved Experiences:</h2>
+      <div className={`m4 ${saveExperience.length < 1 ? "hidden" : "block"}`}>
+        <h2>Saved Experiences</h2>
         {saveExperience.map((field, index) => (
           <PrintJobs
             key={index}
@@ -82,7 +82,7 @@ function WorkFields() {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

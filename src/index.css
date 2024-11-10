@@ -38,6 +38,13 @@ h1 {
   line-height: 1.2;
 }
 
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
