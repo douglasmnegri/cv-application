@@ -1,7 +1,7 @@
 import Container from "./html_components/Container";
 import { useState } from "react";
 
-const educationFields = [
+const workFields = [
   { label: "Position", type: "text", name: "position" },
   { label: "Company", type: "text", name: "company" },
   { label: "Start date of Contract", type: "number", name: "startDate" },
@@ -43,7 +43,7 @@ function WorkFields() {
     <>
       <div className="flex flex-start m-4">
         <div>
-          {educationFields.map((content, index) => (
+          {workFields.map((content, index) => (
             <label key={index}>
               {content.label}
               <input
