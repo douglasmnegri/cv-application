@@ -16,7 +16,14 @@ function WorkFields() {
     endDate: "",
   });
 
-  const [saveExperience, setSaveExperience] = useState([]);
+  const [saveExperience, setSaveExperience] = useState([
+    {
+      position: "Software Engineer",
+      company: "Google",
+      startDate: "2024",
+      endDate: "",
+    },
+  ]);
 
   function handleWorkExperience() {
     // Add the current fields to saveExperience
