@@ -1,8 +1,10 @@
 import { CiMail } from "react-icons/ci";
 import { CiPhone } from "react-icons/ci";
+import { CiLocationOn } from "react-icons/ci";
 
 function CurriculumTemplate({ savedData }) {
-  const { fullName, jobTitle, phone } = savedData[0] || {};
+  const { fullName, jobTitle, email, phone, city, careerSummary } =
+    savedData[0] || {};
 
   return (
     <div className="flex justify-center bg-gray-100 p-4">
@@ -14,16 +16,17 @@ function CurriculumTemplate({ savedData }) {
                 {!fullName ? "John M. Doe" : fullName}
               </h1>
               <h2 className="text-black italic">
-                {!jobTitle? "Software Engineer" : jobTitle}
+                {!jobTitle ? "Software Engineer" : jobTitle}
               </h2>
             </div>
             <div className="text-sm text-center">
-              <h2 className="text-black font-bold uppercase w-4/5">Profile</h2>
-              <p className="mt-4 w-4/5">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Officia necessitatibus aut accusamus! Adipisci voluptas cumque
-                deserunt delectus repellat temporibus voluptates nam vel nisi
-                sequi doloribus sit alias illo, illum officia.
+              <h2 className="text-black font-bold uppercase text-center">
+                Profile
+              </h2>
+              <p className="mt-4">
+                {!careerSummary
+                  ? "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia necessitatibus aut accusamus! Adipisci voluptas cumque deserunt delectus repellat temporibus voluptates nam vel nisi sequi doloribus sit alias illo, illum officia."
+                  : careerSummary}
               </p>
             </div>
           </div>
@@ -104,14 +107,19 @@ function CurriculumTemplate({ savedData }) {
               </p>
             </div>
           </div>
-          <div className="bg-pale-yellow text-black p-6 row-span-1 flex justify-around items-center">
-            <div className="mr-14 w-[650px]"></div>
-          </div>
-          <div className="bg-pale-yellow text-black p-6 row-span-1 flex justify-around items-center">
-            <div className="mr-14 w-[650px]">
+          <div className=" bg-pale-yellow text-black p-6">
+            <div className="flex justify-around">
               <Contact
                 IconComponent={CiPhone}
-                label={!phone ? "Phone: 555-555-22" : `Phone: ${phone}`}
+                label={!phone ? "555-555-22" : phone}
+              />
+              <Contact
+                IconComponent={CiMail}
+                label={!email ? "john_doe@gmail.com" : email}
+              />
+              <Contact
+                IconComponent={CiLocationOn}
+                label={!city ? "New York" : city}
               />
             </div>
           </div>
@@ -124,17 +132,12 @@ function CurriculumTemplate({ savedData }) {
 function Contact({ IconComponent, label }) {
   return (
     <>
-      <div className="flex justify-around">
-        <div className="flex justify-center items-center gap-2">
-          <IconComponent />
-          <p>{label}</p>
-        </div>
+      <div className="flex items-center text-lg gap-1">
+        <IconComponent />
+        <p>{label}</p>
       </div>
     </>
   );
 }
 
 export default CurriculumTemplate;
-
-// <p>City: New York</p>
-// <p>Email: john_john@gmail.com</p>
