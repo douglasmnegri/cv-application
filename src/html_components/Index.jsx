@@ -4,10 +4,11 @@ import WorkExperience from "../WorkExperience";
 import Education from "../Education";
 import Skills from "../Skills";
 import CurriculumTemplate from "./CurriculumTemplate";
+import App from "../App";
 import { useState } from "react";
 
 const components = [
-  SignUpForm,
+  App,
   Languages,
   WorkExperience,
   Education,

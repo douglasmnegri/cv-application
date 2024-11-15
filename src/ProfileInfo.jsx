@@ -1,7 +1,14 @@
-import { useState } from "react";
 import Container from "./html_components/Container.jsx";
 
-function PersonalDetails({ title, placeholder, type, width, name, value, onChange }) {
+function PersonalDetails({
+  title,
+  placeholder,
+  type,
+  width,
+  name,
+  value,
+  onChange,
+}) {
   return (
     <div className="mb-4">
       <label className="text-l">
@@ -12,38 +19,16 @@ function PersonalDetails({ title, placeholder, type, width, name, value, onChang
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className={`border-solid border-white border-2 block p-2 ${width || "w-[350px]"}`}
+          className={`border-solid border-white border-2 block p-2 ${
+            width || "w-[350px]"
+          }`}
         />
       </label>
     </div>
   );
 }
 
-function SignUpForm() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    jobTitle: "",
-    email: "",
-    phone: "",
-    city: "",
-    careerSummary: ""
-  });
-  const [savedData, setSavedData] = useState([]);
-
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
-  }
-
-  function handleSave() {
-    setSavedData((prevData) => [...prevData, formData]);
-    console.log(savedData); 
-    setFormData({ fullName: "", jobTitle: "", email: "", phone: "", city: "", careerSummary: "" });
-  }
-
+export default function SignUpForm({ formData, onChange, onSave }) {
   return (
     <div>
       <h1>Personal Information</h1>
@@ -56,7 +41,7 @@ function SignUpForm() {
               type="text"
               name="fullName"
               value={formData.fullName}
-              onChange={handleChange}
+              onChange={onChange}
             />
             <PersonalDetails
               title="Job Title"
@@ -64,7 +49,7 @@ function SignUpForm() {
               type="text"
               name="jobTitle"
               value={formData.jobTitle}
-              onChange={handleChange}
+              onChange={onChange}
             />
           </div>
           <div className="personal-details">
@@ -74,7 +59,7 @@ function SignUpForm() {
               type="email"
               name="email"
               value={formData.email}
-              onChange={handleChange}
+              onChange={onChange}
             />
             <PersonalDetails
               title="Phone"
@@ -82,7 +67,7 @@ function SignUpForm() {
               type="tel"
               name="phone"
               value={formData.phone}
-              onChange={handleChange}
+              onChange={onChange}
             />
           </div>
         </div>
@@ -93,7 +78,7 @@ function SignUpForm() {
             type="text"
             name="city"
             value={formData.city}
-            onChange={handleChange}
+            onChange={onChange}
             width="w-[740px]"
           />
         </div>
@@ -105,13 +90,13 @@ function SignUpForm() {
             id="career-summary"
             name="careerSummary"
             value={formData.careerSummary}
-            onChange={handleChange}
+            onChange={onChange}
             placeholder="Describe your career journey..."
             className="border-2 border-gray-300 bg-slate-600 bg-opacity-90 h-[150px] p-2 text-white"
           />
         </div>
         <div className="flex justify-end mr-6">
-          <button onClick={handleSave} className="flex bg-green-500 p-2 text-white">
+          <button onClick={onSave} className="flex bg-green-500 p-2 text-white">
             SAVE INFORMATION
           </button>
         </div>
@@ -119,5 +104,3 @@ function SignUpForm() {
     </div>
   );
 }
-
-export default SignUpForm;

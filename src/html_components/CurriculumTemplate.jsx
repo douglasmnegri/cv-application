@@ -1,15 +1,15 @@
-
-
-function CurriculumTemplate() {
+function CurriculumTemplate({ savedData }) {
+  let name = savedData.map((name) => name.fullName);
   return (
     <div className="flex justify-center bg-gray-100 p-4">
       <div className="w-full max-w-4xl shadow-lg border border-gray-200 bg-white">
         <div className="grid grid-rows-4 h-full">
           <div className="bg-pale-yellow text-black p-6 row-span-1 flex justify-around items-center">
             <div className="mr-14 w-[650px]">
-              <h1 className="text-5xl font-bold text-black	leading-snug	 text-center">
-                Douglas M. Negri
+              <h1 className="text-5xl font-bold text-black	leading-snug text-center">
+                {name == false ? "John M. Doe" : name}
               </h1>
+              <h2 className="text-black italic">Software Engineer</h2>
             </div>
             <div className="text-sm text-center">
               <h2 className="text-black font-bold uppercase w-4/5">Profile</h2>
