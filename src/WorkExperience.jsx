@@ -68,7 +68,7 @@ function WorkFields() {
               placeholder="Describe your career journey..."
               className="border-2 border-gray-300 bg-slate-600 bg-opacity-90 w-[300px] h-[150px] text-white"
             />
-            <button onClick={handleWorkExperience}>Add Experience</button>
+            <button onClick={handleWorkExperience} className="bg-green-500">Add Experience</button>
           </div>
         </div>
       </div>

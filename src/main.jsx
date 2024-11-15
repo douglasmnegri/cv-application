@@ -7,7 +7,7 @@ import ToggleComponents from "./html_components/Index";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    {/* <ToggleComponents /> */}
-    <CurriculumTemplate />
+    {/* <CurriculumTemplate /> */}
+    <ToggleComponents />
   </StrictMode>
 );

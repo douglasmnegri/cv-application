@@ -33,7 +33,7 @@ function SkillsFields() {
               onChange={handleInputField}
             />
           </label>
-          <button onClick={handleSkills}>Add Experience</button>
+          <button onClick={handleSkills} className="bg-green-500">Add Experience</button>
         </div>
       </div>
       <div className={`m4 ${savedSkills.length < 1 ? "hidden" : "block"}`}>
