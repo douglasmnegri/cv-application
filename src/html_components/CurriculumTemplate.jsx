@@ -1,5 +1,9 @@
+import { CiMail } from "react-icons/ci";
+import { CiPhone } from "react-icons/ci";
+
 function CurriculumTemplate({ savedData }) {
-  let name = savedData.map((name) => name.fullName);
+  const { fullName, jobTitle, phone } = savedData[0] || {};
+
   return (
     <div className="flex justify-center bg-gray-100 p-4">
       <div className="w-full max-w-4xl shadow-lg border border-gray-200 bg-white">
@@ -7,9 +11,11 @@ function CurriculumTemplate({ savedData }) {
           <div className="bg-pale-yellow text-black p-6 row-span-1 flex justify-around items-center">
             <div className="mr-14 w-[650px]">
               <h1 className="text-5xl font-bold text-black	leading-snug text-center">
-                {name == false ? "John M. Doe" : name}
+                {!fullName ? "John M. Doe" : fullName}
               </h1>
-              <h2 className="text-black italic">Software Engineer</h2>
+              <h2 className="text-black italic">
+                {!jobTitle? "Software Engineer" : jobTitle}
+              </h2>
             </div>
             <div className="text-sm text-center">
               <h2 className="text-black font-bold uppercase w-4/5">Profile</h2>
@@ -98,10 +104,37 @@ function CurriculumTemplate({ savedData }) {
               </p>
             </div>
           </div>
+          <div className="bg-pale-yellow text-black p-6 row-span-1 flex justify-around items-center">
+            <div className="mr-14 w-[650px]"></div>
+          </div>
+          <div className="bg-pale-yellow text-black p-6 row-span-1 flex justify-around items-center">
+            <div className="mr-14 w-[650px]">
+              <Contact
+                IconComponent={CiPhone}
+                label={!phone ? "Phone: 555-555-22" : `Phone: ${phone}`}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
+function Contact({ IconComponent, label }) {
+  return (
+    <>
+      <div className="flex justify-around">
+        <div className="flex justify-center items-center gap-2">
+          <IconComponent />
+          <p>{label}</p>
+        </div>
+      </div>
+    </>
+  );
+}
+
 export default CurriculumTemplate;
+
+// <p>City: New York</p>
+// <p>Email: john_john@gmail.com</p>
