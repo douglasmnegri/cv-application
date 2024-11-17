@@ -18,7 +18,8 @@ function App() {
     handleSaveLanguages,
   } = HandleLang();
 
-  const { field, savedSkills, handleInputField, handleSkills } = HandleSkills();
+  const { field, savedSkills, handleInputField, handleSkills, handleDelete } =
+    HandleSkills();
 
   return (
     <div>
@@ -31,6 +32,7 @@ function App() {
         field={field}
         onChange={handleInputField}
         onSave={handleSkills}
+        onDelete={handleDelete}
         skills={savedSkills}
       />
 
@@ -40,7 +42,6 @@ function App() {
         onChangeLang={handleLanguageChange}
         onChangeProficiency={handleProficiencyChange}
         onSaveLang={handleSaveLanguages}
-        
       />
       <CurriculumTemplate
         savedData={savedData}

@@ -14,13 +14,15 @@ export default function useSkills() {
       id: uuidv4(),
       field,
     };
-
     setSavedSkills((prevSkills) => [...prevSkills, newSkill]);
-
     setField("");
+    console.log(savedSkills);
   }
 
-  console.log(savedSkills);
-
-  return { field, savedSkills, handleInputField, handleSkills };
+  function handleDelete(id) {
+    setSavedSkills((prevSkills) =>
+      prevSkills.filter((skill) => skill.id !== id)
+    );
+  }
+  return { field, savedSkills, handleInputField, handleSkills, handleDelete };
 }
