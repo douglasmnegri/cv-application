@@ -28,9 +28,9 @@ export default function useLanguages() {
     }
   }
 
-  // function handleDelete(identification) {
-  //   savedLanguages.filter((lang) => lang.id == identification);
-  // }
+  function handleDeleteLang(id) {
+    setSavedLanguages((prevLang) => prevLang.filter((lang) => lang.id !== id));
+  }
 
   return {
     language,
@@ -39,5 +39,6 @@ export default function useLanguages() {
     handleLanguageChange,
     handleProficiencyChange,
     handleSaveLanguages,
+    handleDeleteLang,
   };
 }

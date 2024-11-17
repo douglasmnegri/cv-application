@@ -1,6 +1,6 @@
 import SignUpForm from "./profile-information/ProfileInfo";
 import Skills from "./skills/Skills";
-import Languages from "./Languages";
+import Languages from "./languages/Languages";
 import CurriculumTemplate from "./html_components/CurriculumTemplate";
 import HandleLang from "./languages/HandleLang";
 import HandleProfileInfo from "./profile-information/HandleProfileInfo";
@@ -16,6 +16,7 @@ function App() {
     handleLanguageChange,
     handleProficiencyChange,
     handleSaveLanguages,
+    handleDeleteLang
   } = HandleLang();
 
   const { field, savedSkills, handleInputField, handleSkills, handleDelete } =
@@ -42,6 +43,8 @@ function App() {
         onChangeLang={handleLanguageChange}
         onChangeProficiency={handleProficiencyChange}
         onSaveLang={handleSaveLanguages}
+        savedLang={savedLanguages}
+        onDeleteLang={handleDeleteLang}
       />
       <CurriculumTemplate
         savedData={savedData}

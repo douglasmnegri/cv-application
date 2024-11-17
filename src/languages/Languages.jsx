@@ -1,4 +1,4 @@
-import Container from "./html_components/Container";
+import Container from "../html_components/Container";
 
 export default function Languages({
   language,
@@ -6,6 +6,8 @@ export default function Languages({
   onChangeLang,
   onChangeProficiency,
   onSaveLang,
+  savedLang,
+  onDeleteLang,
 }) {
   return (
     <>
@@ -55,7 +57,43 @@ export default function Languages({
             </button>
           </div>
         </div>
+        <div>
+          <h1
+            className={`text-white flex justify-center text-center ${
+              savedLang.length > 0 ? "block" : "hidden"
+            }`}
+          >
+            Saved Languages
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {savedLang.map((lang) => (
+              <PrintLang
+                key={lang.id}
+                id={lang.id}
+                lang={lang.language}
+                proficiency={lang.proficiency}
+                del={() => onDeleteLang(lang.id)}
+              />
+            ))}
+          </div>
+        </div>
       </Container>
     </>
+  );
+}
+
+function PrintLang({ lang, proficiency, del }) {
+  return (
+    <div className="relative border-2 border-solid rounded border-white bg-white text-black mb-2 m-4 p-4">
+      <p>
+        {lang} ({proficiency})
+      </p>
+      <button
+        onClick={del}
+        className="absolute top-[-12px] right-[-12px] text-red-500 font-bold text-xs hover:text-red-700 py-1 px-2"
+      >
+        X
+      </button>
+    </div>
   );
 }
