@@ -2,7 +2,7 @@ import { CiMail } from "react-icons/ci";
 import { CiPhone } from "react-icons/ci";
 import { CiLocationOn } from "react-icons/ci";
 
-function CurriculumTemplate({ savedData, field }) {
+function CurriculumTemplate({ savedData, savedSkills, savedLang }) {
   const { fullName, jobTitle, email, phone, city, careerSummary } =
     savedData[0];
 
@@ -49,9 +49,10 @@ function CurriculumTemplate({ savedData, field }) {
                 Languages
               </div>
               <ul className="list-disc pl-4 p-8">
-                <li>English</li>
+                {/* <li>English</li>
                 <li>Portuguese</li>
-                <li>Spanish</li>
+                <li>Spanish</li> */}
+                <HandleLang savedLang={savedLang} />
               </ul>
 
               <div className="font-bold uppercase mt-8 border-brown-500 border-b-4">
@@ -66,7 +67,7 @@ function CurriculumTemplate({ savedData, field }) {
                 <li>Recruiting & hiring talent</li>
                 <li>Quality assurance</li>
                 <li>Verbal communicator</li> */}
-                <HandleSkills field={field} />
+                <HandleSkills savedSkills={savedSkills} />
               </ul>
             </div>
 
@@ -156,11 +157,21 @@ function Contact({ IconComponent, label }) {
   );
 }
 
-function HandleSkills({ field }) {
+function HandleSkills({ savedSkills }) {
   return (
     <>
-      {field.map((field, index) => (
+      {savedSkills.map((field, index) => (
         <li key={index}>{field}</li>
+      ))}
+    </>
+  );
+}
+
+function HandleLang({ savedLang }) {
+  return (
+    <>
+      {savedLang.map((field, index) => (
+        <li key={index}>{field.language} ({field.proficiency})</li>
       ))}
     </>
   );
