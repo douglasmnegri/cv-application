@@ -1,5 +1,4 @@
 import Languages from "../Languages";
-import SignUpForm from "../ProfileInfo";
 import WorkExperience from "../WorkExperience";
 import Education from "../Education";
 import Skills from "../Skills";
