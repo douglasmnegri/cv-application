@@ -33,7 +33,14 @@ function EducationFields() {
     location: "",
   });
 
-  const [saveEducation, setSaveEducation] = useState([]);
+  const [saveEducation, setSaveEducation] = useState([
+    {
+      school: "UFSC",
+      startDate: "2018",
+      endDate: "2024",
+      location: "Florianópolis",
+    },
+  ]);
 
   function handleInputFields(e) {
     const { name, value } = e.target;
@@ -53,6 +60,7 @@ function EducationFields() {
     });
     console.log(saveEducation);
   }
+
   return (
     <>
       <div>
@@ -110,7 +118,7 @@ function EducationFields() {
 
 function PrintSchools({ school, date, location }) {
   return (
-    <div className="border-2 border-solid border-white bg-white text-black mb-2  m-4 p-4">
+    <div className="relative border-2 border-solid border-white bg-white text-black mb-2  m-4 p-4">
       <p>
         <strong>Institution:</strong> {school}
       </p>
@@ -120,6 +128,9 @@ function PrintSchools({ school, date, location }) {
       <p>
         <strong>Location:</strong> {location}
       </p>
+      <button className="absolute top-[-12px] right-[-12px] text-red-500 font-bold text-xs hover:text-red-700 py-1 px-2">
+        X
+      </button>
     </div>
   );
 }

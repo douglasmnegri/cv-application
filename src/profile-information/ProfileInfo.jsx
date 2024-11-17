@@ -1,4 +1,4 @@
-import Container from "./html_components/Container.jsx";
+import Container from "../html_components/Container.jsx";
 
 function PersonalDetails({
   title,

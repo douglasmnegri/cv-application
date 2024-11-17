@@ -152,8 +152,8 @@ function Contact({ IconComponent, label }) {
 function HandleSkills({ savedSkills }) {
   return (
     <>
-      {savedSkills.map((field, index) => (
-        <li key={index}>{field}</li>
+      {savedSkills.map((skill, index) => (
+        <li key={index}>{skill.field}</li>
       ))}
     </>
   );
