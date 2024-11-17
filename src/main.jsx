@@ -1,12 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import CurriculumTemplate from "./html_components/CurriculumTemplate";
 import "./index.css";
 import "@fontsource/roboto";
-import ToggleComponents from "./html_components/Index";
+import App from "./App";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ToggleComponents />
+    <App />
   </StrictMode>
 );

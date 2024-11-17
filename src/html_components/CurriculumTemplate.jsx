@@ -6,13 +6,6 @@ function CurriculumTemplate({ savedData, savedSkills, savedLang }) {
   const { fullName, jobTitle, email, phone, city, careerSummary } =
     savedData[0];
 
-  // function handleSkills(field) {
-  //   return (
-  //     <>
-  //       <li>{field}</li>
-  //     </>
-  //   );
-  // }
   return (
     <div className="flex justify-center bg-gray-100 p-4">
       <div className="w-full max-w-4xl shadow-lg border border-gray-200 bg-white">
@@ -59,8 +52,7 @@ function CurriculumTemplate({ savedData, savedSkills, savedLang }) {
                 Key Skills
               </div>
               <ul className="list-disc pl-4">
-                {/* <li>{field}</li>
-                <li>Excellent listener</li>
+                {/* <li>Excellent listener</li>
                 <li>Friendly & courteous</li>
                 <li>Poised under pressure</li>
                 <li>Staff training & coaching</li>
@@ -171,7 +163,9 @@ function HandleLang({ savedLang }) {
   return (
     <>
       {savedLang.map((field, index) => (
-        <li key={index}>{field.language} ({field.proficiency})</li>
+        <li key={index}>
+          {field.language} ({field.proficiency})
+        </li>
       ))}
     </>
   );
