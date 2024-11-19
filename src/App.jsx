@@ -1,10 +1,12 @@
-import SignUpForm from "./profile-information/ProfileInfo";
-import Skills from "./skills/Skills";
-import Languages from "./languages/Languages";
 import CurriculumTemplate from "./html_components/CurriculumTemplate";
-import HandleLang from "./languages/HandleLang";
+import SignUpForm from "./profile-information/ProfileInfo";
 import HandleProfileInfo from "./profile-information/HandleProfileInfo";
+import Skills from "./skills/Skills";
 import HandleSkills from "./skills/HandleSkills";
+import Languages from "./languages/Languages";
+import HandleLang from "./languages/HandleLang";
+import Education from "./education/Education";
+import HandleEducation from "./education/HandleEducation";
 
 function App() {
   const { formData, savedData, handleFormChange, handleSave } =
@@ -16,11 +18,14 @@ function App() {
     handleLanguageChange,
     handleProficiencyChange,
     handleSaveLanguages,
-    handleDeleteLang
+    handleDeleteLang,
   } = HandleLang();
 
   const { field, savedSkills, handleInputField, handleSkills, handleDelete } =
     HandleSkills();
+
+  const { handleInputFields, handleEducation, educationFields, fields, saveEducation } =
+    HandleEducation();
 
   return (
     <div>
@@ -45,6 +50,13 @@ function App() {
         onSaveLang={handleSaveLanguages}
         savedLang={savedLanguages}
         onDeleteLang={handleDeleteLang}
+      />
+      <Education
+        educationFields={educationFields}
+        fields={fields}
+        saveEducation={saveEducation}
+        onChangeFields={handleInputFields}
+        handleEducation={handleEducation}
       />
       <CurriculumTemplate
         savedData={savedData}
