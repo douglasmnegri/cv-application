@@ -3,8 +3,8 @@ import Container from "../html_components/Container";
 export default function Skills({ field, onSave, onChange, onDelete, skills }) {
   return (
     <>
-      <h1>Skills</h1>
       <Container>
+        <h1>Skills</h1>
         <div className="flex justify-center m-4 border-b-2">
           <div>
             <label>

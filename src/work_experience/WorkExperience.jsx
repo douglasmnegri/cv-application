@@ -11,8 +11,8 @@ export default function WorkExperience({
 }) {
   return (
     <>
-      <h1>Work Experience</h1>
       <Container>
+        <h1>Work Experience</h1>
         <div className="flex gap-16">
           <div className="flex m-4">
             <div>

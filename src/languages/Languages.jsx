@@ -11,8 +11,8 @@ export default function Languages({
 }) {
   return (
     <>
-      <h1>Languages</h1>
       <Container>
+        <h1>Languages</h1>
         <div
           className="flex justify-around align-bottom border-b-2
 

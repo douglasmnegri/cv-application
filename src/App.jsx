@@ -44,51 +44,57 @@ function App() {
   } = HandleWorkExperience();
 
   return (
-    <div>
-      <SignUpForm
-        formData={formData}
-        onChange={handleFormChange}
-        onSave={handleSave}
-      />
-      <Skills
-        field={field}
-        onChange={handleInputField}
-        onSave={handleSkills}
-        onDelete={handleDelete}
-        skills={savedSkills}
-      />
+    <div className="grid grid-cols-2 m-4 p-4">
+      <div className="col-span-1 flex flex-col gap-4">
+        {/* <SignUpForm
+          formData={formData}
+          onChange={handleFormChange}
+          onSave={handleSave}
+        /> */}
+        <Skills
+          field={field}
+          onChange={handleInputField}
+          onSave={handleSkills}
+          onDelete={handleDelete}
+          skills={savedSkills}
+        />
 
-      <Languages
-        language={language}
-        proficiency={proficiency}
-        onChangeLang={handleLanguageChange}
-        onChangeProficiency={handleProficiencyChange}
-        onSaveLang={handleSaveLanguages}
-        savedLang={savedLanguages}
-        onDeleteLang={handleDeleteLang}
-      />
-      <Education
-        educationFields={educationFields}
-        fields={fields}
-        savedEducation={savedEducation}
-        onChangeFields={handleInputFields}
-        handleEducation={handleEducation}
-        onDeleteEduc={deleteEducation}
-      />
-      <WorkExperience
-        workFields={workFields}
-        workedFields={workedFields}
-        handleWorkFields={handleWorkFields}
-        handleWorkExperience={handleWorkExperience}
-        savedExperience={savedExperience}
-      />
-      <CurriculumTemplate
-        savedData={savedData}
-        savedSkills={savedSkills}
-        savedLang={savedLanguages}
-        savedEducation={savedEducation}
-        savedExperience={savedExperience}
-      />
+        <Languages
+          language={language}
+          proficiency={proficiency}
+          onChangeLang={handleLanguageChange}
+          onChangeProficiency={handleProficiencyChange}
+          onSaveLang={handleSaveLanguages}
+          savedLang={savedLanguages}
+          onDeleteLang={handleDeleteLang}
+        />
+        <Education
+          educationFields={educationFields}
+          fields={fields}
+          savedEducation={savedEducation}
+          onChangeFields={handleInputFields}
+          handleEducation={handleEducation}
+          onDeleteEduc={deleteEducation}
+        />
+        <WorkExperience
+          workFields={workFields}
+          workedFields={workedFields}
+          handleWorkFields={handleWorkFields}
+          handleWorkExperience={handleWorkExperience}
+          savedExperience={savedExperience}
+        />
+      </div>
+      <div className="col-span-1">
+        <div className="sticky top-0">
+          <CurriculumTemplate
+            savedData={savedData}
+            savedSkills={savedSkills}
+            savedLang={savedLanguages}
+            savedEducation={savedEducation}
+            savedExperience={savedExperience}
+          />
+        </div>
+      </div>
     </div>
   );
 }

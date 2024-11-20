@@ -11,8 +11,8 @@ export default function Education({
 }) {
   return (
     <>
-      <h1>Education</h1>
       <Container>
+        <h1>Education</h1>
         <div>
           <div
             className="grid grid-cols-2 border-b-2
@@ -29,12 +29,12 @@ export default function Education({
                     value={fields[content.name]}
                     placeholder={content.placeholder}
                     onChange={onChangeFields}
-                    className="block border border-gray-300 p-2 mt-1 w-[350px]"
+                    className="block border border-gray-300 p-2 mt-1"
                   />
                 </label>
               </div>
             ))}
-            <div className="col-start-2 w-[350px] flex justify-end">
+            <div className="col-start-2 flex justify-end">
               <button
                 className="border mt-2 bg-green-500 text-white rounded"
                 onClick={handleEducation}

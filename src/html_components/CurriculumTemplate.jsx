@@ -13,9 +13,9 @@ function CurriculumTemplate({
     savedData[0];
 
   return (
-    <div className="flex justify-center bg-gray-100 p-4">
-      <div className="w-full max-w-4xl shadow-lg border border-gray-200 bg-white">
-        <div className="grid grid-rows-4 h-full">
+    <div className="flex justify-center w-[650px]">
+      <div className="shadow-lg border border-gray-200 bg-white">
+        <div className="grid grid-rows-4">
           <div className="bg-pale-yellow text-black p-6 row-span-1 flex justify-around items-center">
             <div className="mr-14 w-[650px]">
               <h1 className="text-5xl font-bold text-black	leading-snug text-center">

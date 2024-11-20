@@ -19,9 +19,7 @@ function PersonalDetails({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className={`border-solid border-white border-2 block p-2 ${
-            width || "w-[350px]"
-          }`}
+          className="border-solid border-white border-2 block p-2"
         />
       </label>
     </div>
@@ -31,8 +29,8 @@ function PersonalDetails({
 export default function SignUpForm({ formData, onChange, onSave }) {
   return (
     <div>
-      <h1>Personal Information</h1>
       <Container>
+        <h1>Personal Information</h1>
         <div className="flex justify-around m-2 p-2 gap-2">
           <div className="personal-details">
             <PersonalDetails
