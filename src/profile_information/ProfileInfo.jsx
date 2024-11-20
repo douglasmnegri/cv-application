@@ -10,7 +10,7 @@ function PersonalDetails({
   onChange,
 }) {
   return (
-    <div className="mb-4">
+    <div className="mb-4 input-container">
       <label className="text-l">
         {title}
         <input
@@ -19,7 +19,7 @@ function PersonalDetails({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className="border-solid border-white border-2 block p-2"
+          className="border-solid border-white border-2 block"
         />
       </label>
     </div>
@@ -31,7 +31,7 @@ export default function SignUpForm({ formData, onChange, onSave }) {
     <div>
       <Container>
         <h1>Personal Information</h1>
-        <div className="flex justify-around m-2 p-2 gap-2">
+        <div className="flex justify-center m-2 p-2 gap-2">
           <div className="personal-details">
             <PersonalDetails
               title="Full Name"
@@ -68,8 +68,6 @@ export default function SignUpForm({ formData, onChange, onSave }) {
               onChange={onChange}
             />
           </div>
-        </div>
-        <div className="flex justify-start ml-5 p-2 gap-2">
           <PersonalDetails
             title="City"
             placeholder="New York"
@@ -90,7 +88,7 @@ export default function SignUpForm({ formData, onChange, onSave }) {
             value={formData.careerSummary}
             onChange={onChange}
             placeholder="Describe your career journey..."
-            className="border-2 border-gray-300 bg-slate-600 bg-opacity-90 h-[150px] p-2 text-white"
+            className="border-2 border-gray-300 bg-slate-600 bg-opacity-90 h-[100px] p-2 text-white"
           />
         </div>
         <div className="flex justify-end mr-6">

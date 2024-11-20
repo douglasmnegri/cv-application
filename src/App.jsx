@@ -46,11 +46,11 @@ function App() {
   return (
     <div className="grid grid-cols-2 m-4 p-4">
       <div className="col-span-1 flex flex-col gap-4">
-        {/* <SignUpForm
+        <SignUpForm
           formData={formData}
           onChange={handleFormChange}
           onSave={handleSave}
-        /> */}
+        />
         <Skills
           field={field}
           onChange={handleInputField}
