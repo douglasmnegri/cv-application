@@ -24,46 +24,44 @@ const educationFields = [
 ];
 
 export default function useEducation() {
-    const [fields, setsFields] = useState({
-        school: "",
-        startDate: "",
-        endDate: "",
-        location: "",
-      });
-    
-      const [saveEducation, setSaveEducation] = useState([
-        {
-          school: "UFSC",
-          startDate: "2018",
-          endDate: "2024",
-          location: "Florianópolis",
-        },
-      ]);
-    
-      function handleInputFields(e) {
-        const { name, value } = e.target;
-        setsFields((prevFields) => ({
-          ...prevFields,
-          [name]: value,
-        }));
-      }
-    
-      function handleEducation() {
-        setSaveEducation((prevEducation) => [...prevEducation, fields]);
-        setsFields({
-          school: "",
-          startDate: "",
-          endDate: "",
-          location: "",
-        });
-        console.log(saveEducation);
-      }
+  const [fields, setsFields] = useState({
+    school: "",
+    startDate: "",
+    endDate: "",
+    location: "",
+  });
 
-      return {
-        handleInputFields,
-        handleEducation,
-        educationFields,
-        fields,
-        saveEducation
-      }
+  const [saveEducation, setSaveEducation] = useState([]);
+
+  function handleInputFields(e) {
+    const { name, value } = e.target;
+    setsFields((prevFields) => ({
+      ...prevFields,
+      [name]: value,
+    }));
+  }
+
+  function handleEducation() {
+    const newEducation = {
+      id: uuidv4(),
+      ...fields,
+    };
+
+    console.log(newEducation);
+    setSaveEducation((prevEducation) => [...prevEducation, newEducation]);
+    setsFields({
+      school: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+    });
+  }
+
+  return {
+    handleInputFields,
+    handleEducation,
+    educationFields,
+    fields,
+    saveEducation,
+  };
 }

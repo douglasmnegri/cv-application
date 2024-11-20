@@ -43,6 +43,24 @@ export default function Education({
             </div>
           </div>
         </div>
+        <div className={`m4 ${saveEducation.length < 1 ? "hidden" : "block"}`}>
+          <h2>Saved Education</h2>
+          <div className="flex flex-wrap justify-evenly">
+            {saveEducation.map((field) => (
+              <PrintSchools
+                key={field.id}
+                school={field.school}
+                location={field.location}
+                date={
+                  field.endDate == ""
+                    ? field.startDate + " (In progress)"
+                    : field.startDate + " - " + field.endDate
+                }
+              />
+            ))}
+          </div>
+        </div>
+        ;
       </Container>
     </>
   );
@@ -65,24 +83,4 @@ function PrintSchools({ school, date, location }) {
       </button>
     </div>
   );
-}
-
-{
-  /* <div className={`m4 ${saveEducation.length < 1 ? "hidden" : "block"}`}>
-          <h2>Saved Education</h2>
-          <div className="flex flex-wrap justify-evenly">
-            {saveEducation.map((field, index) => (
-              <PrintSchools
-                key={index}
-                school={field.school}
-                location={field.location}
-                date={
-                  field.endDate == ""
-                    ? field.startDate + " (In progress)"
-                    : field.startDate + " - " + field.endDate
-                }
-              />
-            ))}
-          </div>
-        </div> */
 }
