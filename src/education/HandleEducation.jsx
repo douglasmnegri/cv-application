@@ -6,15 +6,15 @@ const educationFields = [
     label: "School / University",
     type: "text",
     name: "school",
-    placeholder: "Federal University of Santa Catarina",
+    placeholder: "UFSC",
   },
   {
     label: "Start Date",
-    type: "number",
+    type: "text",
     name: "startDate",
     placeholder: "2018",
   },
-  { label: "End Date", type: "number", name: "endDate", placeholder: "2024" },
+  { label: "End Date", type: "text", name: "endDate", placeholder: "2024" },
   {
     label: "Diploma",
     type: "text",

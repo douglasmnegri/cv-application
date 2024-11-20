@@ -13,9 +13,11 @@ export default function WorkExperience({
     <>
       <Container>
         <h1>Work Experience</h1>
-        <div className="flex gap-16">
-          <div className="flex m-4">
-            <div>
+        <div
+          className="flex flex-col justify-around border-b-2 p-4"
+        >
+          <div>
+            <div className="input-container grid grid-cols-3 gap-5">
               {workFields.map((content, index) => (
                 <label key={index}>
                   {content.label}
@@ -24,43 +26,45 @@ export default function WorkExperience({
                     name={content.name}
                     value={workedFields[content.name]}
                     onChange={handleWorkFields}
-                    className="block w-[300px] mb-4"
+                    className="block"
                   />
                 </label>
               ))}
-              <div className="flex flex-col gap-4">
-                <textarea
-                  id="career-summary"
-                  placeholder="Describe your career journey..."
-                  name="careerJourney"
-                  value={workedFields.careerJourney}
-                  onChange={handleWorkFields}
-                  className="border-2 border-gray-300 bg-slate-600 bg-opacity-90 w-[300px] h-[150px] text-white"
-                />
-                <button onClick={handleWorkExperience} className="bg-green-500">
-                  Add Experience
-                </button>
-              </div>
             </div>
           </div>
-          <div
-            className={`m4 ${savedExperience.length < 1 ? "hidden" : "block"}`}
-          >
-            <h2>Saved Experiences</h2>
-            {savedExperience.map((field) => (
-              <PrintJobs
-                key={field.id}
-                position={field.position}
-                company={field.company}
-                employmentDate={
-                  field.endDate === ""
-                    ? field.startDate + " (Currently Working)"
-                    : field.startDate + " - " + field.endDate
-                }
-                careerJourney={field.careerJourney} // Pass the careerJourney to PrintJobs
-              />
-            ))}
+
+          <div className="flex flex-col gap-2">
+            <textarea
+              id="career-summary"
+              placeholder="Describe your experience at the company..."
+              name="careerJourney"
+              value={workedFields.careerJourney}
+              onChange={handleWorkFields}
+              className="border-2 border-gray-300 bg-slate-600 bg-opacity-90 h-[80px] text-white"
+            />
+            <button onClick={handleWorkExperience} className="bg-green-500">
+              Add Experience
+            </button>
           </div>
+        </div>
+
+        <div
+          className={`m4 ${savedExperience.length < 1 ? "hidden" : "block"}`}
+        >
+          <h2>Saved Experiences</h2>
+          {savedExperience.map((field) => (
+            <PrintJobs
+              key={field.id}
+              position={field.position}
+              company={field.company}
+              employmentDate={
+                field.endDate === ""
+                  ? field.startDate + " (Currently Working)"
+                  : field.startDate + " - " + field.endDate
+              }
+              careerJourney={field.careerJourney} // Pass the careerJourney to PrintJobs
+            />
+          ))}
         </div>
       </Container>
     </>

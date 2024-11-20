@@ -1,13 +1,6 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const workFields = [
-  { label: "Position", type: "text", name: "position" },
-  { label: "Company", type: "text", name: "company" },
-  { label: "Start date of Contract", type: "number", name: "startDate" },
-  { label: "End date of Contract", type: "number", name: "endDate" },
-];
-
 export default function useWorkExperience() {
     const [workedFields, setWorkedFields] = useState({
       position: "",
@@ -49,8 +42,8 @@ export default function useWorkExperience() {
       workFields: [
         { label: "Position", type: "text", name: "position" },
         { label: "Company", type: "text", name: "company" },
-        { label: "Start date of Contract", type: "number", name: "startDate" },
-        { label: "End date of Contract", type: "number", name: "endDate" },
+        { label: "Start of Contract", type: "number", name: "startDate" },
+        { label: "End of Contract", type: "number", name: "endDate" },
       ],
       workedFields,
       savedExperience,

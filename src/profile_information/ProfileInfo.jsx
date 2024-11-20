@@ -78,8 +78,8 @@ export default function SignUpForm({ formData, onChange, onSave }) {
             width="w-[740px]"
           />
         </div>
-        <div className="flex flex-col justify-center align-middle m-8">
-          <label htmlFor="career-summary" className="text-white">
+        <div className="flex flex-col justify-center align-middle mx-8 my-3">
+          <label htmlFor="career-summary" className="text-white mb-1">
             Describe your professional experience
           </label>
           <textarea
@@ -88,11 +88,11 @@ export default function SignUpForm({ formData, onChange, onSave }) {
             value={formData.careerSummary}
             onChange={onChange}
             placeholder="Describe your career journey..."
-            className="border-2 border-gray-300 bg-slate-600 bg-opacity-90 h-[100px] p-2 text-white"
+            className="border-2 border-gray-300 bg-slate-600 bg-opacity-90 h-[80px] p-2 text-white"
           />
         </div>
-        <div className="flex justify-end mr-6">
-          <button onClick={onSave} className="flex bg-green-500 p-2 text-white">
+        <div className="flex justify-end mr-8">
+          <button onClick={onSave} className="flex bg-green-500 text-white">
             SAVE INFORMATION
           </button>
         </div>

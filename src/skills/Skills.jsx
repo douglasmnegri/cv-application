@@ -5,11 +5,11 @@ export default function Skills({ field, onSave, onChange, onDelete, skills }) {
     <>
       <Container>
         <h1>Skills</h1>
-        <div className="flex justify-center m-4 border-b-2">
+        <div className="flex justify-center border-b-2 input-container">
           <div>
             <label>
               <input
-                className="w-[300px] h-[30px] m-4"
+                className="block border border-gray-300 mt-1 m-4"
                 type="text"
                 name="skills"
                 value={field}
@@ -17,6 +17,8 @@ export default function Skills({ field, onSave, onChange, onDelete, skills }) {
                 onChange={onChange}
               />
             </label>
+          </div>
+          <div className="flex items-center">
             <button onClick={onSave} className="bg-green-500">
               Add Skill
             </button>

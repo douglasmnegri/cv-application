@@ -15,9 +15,9 @@ export default function Education({
         <h1>Education</h1>
         <div>
           <div
-            className="grid grid-cols-2 border-b-2
+            className="grid grid-cols-3 border-b-2
 
- m-4 p-4 items-end"
+ m-4 p-4 items-end input-container"
           >
             {educationFields.map((content, index) => (
               <div className="" key={index}>

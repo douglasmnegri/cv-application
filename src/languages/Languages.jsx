@@ -14,11 +14,11 @@ export default function Languages({
       <Container>
         <h1>Languages</h1>
         <div
-          className="flex justify-around align-bottom border-b-2
+          className="flex justify-around border-b-2
 
- m-4 p-4 items-end"
+ m-4 p-4 items-middle"
         >
-          <div className="flex flex-col">
+          <div className="flex flex-col input-container">
             <label>
               Language
               <input
@@ -27,11 +27,11 @@ export default function Languages({
                 value={language}
                 placeholder="English"
                 onChange={onChangeLang}
-                className="block border border-gray-300 p-2 mt-1"
+                className="block border border-gray-300"
               />
             </label>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col input-container">
             <label>
               Proficiency
               <select
@@ -40,7 +40,7 @@ export default function Languages({
                 onChange={onChangeProficiency}
                 className="block border border-gray-300 p-2 mt-1 text-black"
               >
-                <option value="">Select Proficiency</option>
+                <option value="">Proficiency</option>
                 <option value="Beginner">Beginner</option>
                 <option value="Intermediate">Intermediate</option>
                 <option value="Advanced">Advanced</option>
@@ -48,9 +48,9 @@ export default function Languages({
               </select>
             </label>
           </div>
-          <div className="flex items-end">
+          <div className="flex items-center">
             <button
-              className="border p-2 m-2 bg-green-500 text-white rounded"
+              className="bg-green-500 text-white"
               onClick={onSaveLang}
             >
               Add Language
