@@ -1,12 +1,14 @@
 import CurriculumTemplate from "./html_components/CurriculumTemplate";
-import SignUpForm from "./profile-information/ProfileInfo";
-import HandleProfileInfo from "./profile-information/HandleProfileInfo";
+import SignUpForm from "./profile_information/ProfileInfo";
+import HandleProfileInfo from "./profile_information/HandleProfileInfo";
 import Skills from "./skills/Skills";
 import HandleSkills from "./skills/HandleSkills";
 import Languages from "./languages/Languages";
 import HandleLang from "./languages/HandleLang";
 import Education from "./education/Education";
 import HandleEducation from "./education/HandleEducation";
+import WorkExperience from "./work_experience/WorkExperience";
+import HandleWorkExperience from "./work_experience/HandleWorkExperience";
 
 function App() {
   const { formData, savedData, handleFormChange, handleSave } =
@@ -24,8 +26,22 @@ function App() {
   const { field, savedSkills, handleInputField, handleSkills, handleDelete } =
     HandleSkills();
 
-  const { handleInputFields, handleEducation, deleteEducation, educationFields, fields, savedEducation } =
-    HandleEducation();
+  const {
+    handleInputFields,
+    handleEducation,
+    deleteEducation,
+    educationFields,
+    fields,
+    savedEducation,
+  } = HandleEducation();
+
+  const {
+    workFields,
+    workedFields,
+    savedExperience,
+    handleWorkExperience,
+    handleWorkFields,
+  } = HandleWorkExperience();
 
   return (
     <div>
@@ -58,6 +74,13 @@ function App() {
         onChangeFields={handleInputFields}
         handleEducation={handleEducation}
         onDeleteEduc={deleteEducation}
+      />
+      <WorkExperience
+        workFields={workFields}
+        workedFields={workedFields}
+        handleWorkFields={handleWorkFields}
+        handleWorkExperience={handleWorkExperience}
+        savedExperience={savedExperience}
       />
       <CurriculumTemplate
         savedData={savedData}
