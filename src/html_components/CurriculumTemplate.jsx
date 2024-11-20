@@ -42,24 +42,34 @@ function CurriculumTemplate({ savedData, savedSkills, savedLang }) {
                 Languages
               </div>
               <ul className="list-disc pl-4 p-8">
-                {/* <li>English</li>
-                <li>Portuguese</li>
-                <li>Spanish</li> */}
-                <HandleLang savedLang={savedLang} />
+                {savedLang.length > 0 ? (
+                  <HandleLang savedLang={savedLang} />
+                ) : (
+                  <>
+                    <li>English</li>
+                    <li>Portuguese</li>
+                    <li>Spanish</li>
+                  </>
+                )}
               </ul>
 
               <div className="font-bold uppercase mt-8 border-brown-500 border-b-4">
                 Key Skills
               </div>
               <ul className="list-disc pl-4">
-                {/* <li>Excellent listener</li>
-                <li>Friendly & courteous</li>
-                <li>Poised under pressure</li>
-                <li>Staff training & coaching</li>
-                <li>Recruiting & hiring talent</li>
-                <li>Quality assurance</li>
-                <li>Verbal communicator</li> */}
-                <HandleSkills savedSkills={savedSkills} />
+                {savedSkills.length > 0 ? (
+                  <HandleSkills savedSkills={savedSkills} />
+                ) : (
+                  <>
+                    <li>Excellent listener</li>
+                    <li>Friendly & courteous</li>
+                    <li>Poised under pressure</li>
+                    <li>Staff training & coaching</li>
+                    <li>Recruiting & hiring talent</li>
+                    <li>Quality assurance</li>
+                    <li>Verbal communicator</li>
+                  </>
+                )}
               </ul>
             </div>
 
