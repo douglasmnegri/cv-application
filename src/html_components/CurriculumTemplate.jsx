@@ -2,7 +2,12 @@ import { CiMail } from "react-icons/ci";
 import { CiPhone } from "react-icons/ci";
 import { CiLocationOn } from "react-icons/ci";
 
-function CurriculumTemplate({ savedData, savedSkills, savedLang }) {
+function CurriculumTemplate({
+  savedData,
+  savedSkills,
+  savedLang,
+  savedEducation,
+}) {
   const { fullName, jobTitle, email, phone, city, careerSummary } =
     savedData[0];
 
@@ -115,12 +120,18 @@ function CurriculumTemplate({ savedData, savedSkills, savedLang }) {
                 </div>
               </div>
 
-              <div className="text-md font-bold uppercase mt-8">Education</div>
-              <p className="mt-4">
-                Bachelor of Science in Hospitality Management
-                <br />
-                Bellows College, June 2024
-              </p>
+              <div>
+                <div className="text-md font-bold uppercase mt-8">
+                  Education
+                </div>
+                <p className="mt-4">
+                  Bachelor of Science in Hospitality Management
+                  <br />
+                  Bellows College, June 2024
+                </p>
+
+                <HandleEducation savedEducation={savedEducation} />
+              </div>
             </div>
           </div>
           <div className=" bg-pale-yellow text-black p-6">
@@ -162,8 +173,8 @@ function Contact({ IconComponent, label }) {
 function HandleSkills({ savedSkills }) {
   return (
     <>
-      {savedSkills.map((skill, index) => (
-        <li key={index}>{skill.field}</li>
+      {savedSkills.map((skill) => (
+        <li key={skill.id}>{skill.field}</li>
       ))}
     </>
   );
@@ -172,13 +183,33 @@ function HandleSkills({ savedSkills }) {
 function HandleLang({ savedLang }) {
   return (
     <>
-      {savedLang.map((field, index) => (
-        <li key={index}>
-          {field.language} ({field.proficiency})
+      {savedLang.map((lang) => (
+        <li key={lang.id}>
+          {lang.language} ({lang.proficiency})
         </li>
       ))}
     </>
   );
 }
 
+function HandleEducation({ savedEducation }) {
+  console.log(savedEducation);
+  return (
+    <>
+      {savedEducation.map((educ) => (
+        <div key={educ.id}>
+          <div className="text-md font-bold uppercase mt-8">Education</div>
+          <p className="mt-4">
+            {educ.diploma}
+            <br />
+            {educ.school},{" "}
+            {educ.endDate == ""
+              ? educ.startDate + " (In progress)"
+              : educ.startDate + " - " + educ.endDate}
+          </p>
+        </div>
+      ))}
+    </>
+  );
+}
 export default CurriculumTemplate;

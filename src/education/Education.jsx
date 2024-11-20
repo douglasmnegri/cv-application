@@ -4,9 +4,10 @@ import Container from "../html_components/Container";
 export default function Education({
   educationFields,
   fields,
-  saveEducation,
+  savedEducation,
   onChangeFields,
   handleEducation,
+  onDeleteEduc,
 }) {
   return (
     <>
@@ -43,14 +44,15 @@ export default function Education({
             </div>
           </div>
         </div>
-        <div className={`m4 ${saveEducation.length < 1 ? "hidden" : "block"}`}>
+        <div className={`m4 ${savedEducation.length < 1 ? "hidden" : "block"}`}>
           <h2>Saved Education</h2>
           <div className="flex flex-wrap justify-evenly">
-            {saveEducation.map((field) => (
+            {savedEducation.map((field) => (
               <PrintSchools
                 key={field.id}
                 school={field.school}
-                location={field.location}
+                diploma={field.diploma}
+                onDeleteEduc={() => onDeleteEduc(field.id)}
                 date={
                   field.endDate == ""
                     ? field.startDate + " (In progress)"
@@ -66,19 +68,22 @@ export default function Education({
   );
 }
 
-function PrintSchools({ school, date, location }) {
+function PrintSchools({ school, date, diploma, onDeleteEduc }) {
   return (
     <div className="relative border-2 border-solid border-white bg-white text-black mb-2  m-4 p-4">
       <p>
         <strong>Institution:</strong> {school}
       </p>
       <p>
-        <strong>Date:</strong> {date}
+        <strong>Diploma:</strong> {diploma}
       </p>
       <p>
-        <strong>Location:</strong> {location}
+        <strong>Date:</strong> {date}
       </p>
-      <button className="absolute top-[-12px] right-[-12px] text-red-500 font-bold text-xs hover:text-red-700 py-1 px-2">
+      <button
+        onClick={onDeleteEduc}
+        className="absolute top-[-12px] right-[-12px] text-red-500 font-bold text-xs hover:text-red-700 py-1 px-2"
+      >
         X
       </button>
     </div>

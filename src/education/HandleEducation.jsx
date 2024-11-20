@@ -16,22 +16,22 @@ const educationFields = [
   },
   { label: "End Date", type: "number", name: "endDate", placeholder: "2024" },
   {
-    label: "Location",
+    label: "Diploma",
     type: "text",
-    name: "location",
-    placeholder: "Florianópolis",
+    name: "diploma",
+    placeholder: "Bachelor of Business Administration",
   },
 ];
 
 export default function useEducation() {
   const [fields, setsFields] = useState({
     school: "",
+    diploma: "",
     startDate: "",
     endDate: "",
-    location: "",
   });
 
-  const [saveEducation, setSaveEducation] = useState([]);
+  const [savedEducation, setSavedEducation] = useState([]);
 
   function handleInputFields(e) {
     const { name, value } = e.target;
@@ -47,21 +47,25 @@ export default function useEducation() {
       ...fields,
     };
 
-    console.log(newEducation);
-    setSaveEducation((prevEducation) => [...prevEducation, newEducation]);
+    setSavedEducation((prevEducation) => [...prevEducation, newEducation]);
     setsFields({
       school: "",
+      diploma: "",
       startDate: "",
       endDate: "",
-      location: "",
     });
   }
-
+  function deleteEducation(id) {
+    setSavedEducation((prevEducation) =>
+      prevEducation.filter((educ) => educ.id !== id)
+    );
+  }
   return {
     handleInputFields,
     handleEducation,
+    deleteEducation,
     educationFields,
     fields,
-    saveEducation,
+    savedEducation,
   };
 }

@@ -24,7 +24,7 @@ function App() {
   const { field, savedSkills, handleInputField, handleSkills, handleDelete } =
     HandleSkills();
 
-  const { handleInputFields, handleEducation, educationFields, fields, saveEducation } =
+  const { handleInputFields, handleEducation, deleteEducation, educationFields, fields, savedEducation } =
     HandleEducation();
 
   return (
@@ -54,14 +54,16 @@ function App() {
       <Education
         educationFields={educationFields}
         fields={fields}
-        saveEducation={saveEducation}
+        savedEducation={savedEducation}
         onChangeFields={handleInputFields}
         handleEducation={handleEducation}
+        onDeleteEduc={deleteEducation}
       />
       <CurriculumTemplate
         savedData={savedData}
         savedSkills={savedSkills}
         savedLang={savedLanguages}
+        savedEducation={savedEducation}
       />
     </div>
   );
