@@ -87,6 +87,7 @@ function App() {
         savedSkills={savedSkills}
         savedLang={savedLanguages}
         savedEducation={savedEducation}
+        savedExperience={savedExperience}
       />
     </div>
   );

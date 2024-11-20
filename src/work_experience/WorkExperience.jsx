@@ -1,12 +1,6 @@
-import Container from "../html_components/Container";
 import { useState } from "react";
-
-const workFields = [
-  { label: "Position", type: "text", name: "position" },
-  { label: "Company", type: "text", name: "company" },
-  { label: "Start date of Contract", type: "number", name: "startDate" },
-  { label: "End date of Contract", type: "number", name: "endDate" },
-];
+import { v4 as uuidv4 } from "uuid";
+import Container from "../html_components/Container";
 
 export default function WorkExperience({
   workFields,
@@ -38,6 +32,9 @@ export default function WorkExperience({
                 <textarea
                   id="career-summary"
                   placeholder="Describe your career journey..."
+                  name="careerJourney"
+                  value={workedFields.careerJourney}
+                  onChange={handleWorkFields}
                   className="border-2 border-gray-300 bg-slate-600 bg-opacity-90 w-[300px] h-[150px] text-white"
                 />
                 <button onClick={handleWorkExperience} className="bg-green-500">
@@ -50,16 +47,17 @@ export default function WorkExperience({
             className={`m4 ${savedExperience.length < 1 ? "hidden" : "block"}`}
           >
             <h2>Saved Experiences</h2>
-            {savedExperience.map((field, index) => (
+            {savedExperience.map((field) => (
               <PrintJobs
-                key={index}
+                key={field.id}
                 position={field.position}
                 company={field.company}
                 employmentDate={
-                  field.endDate == ""
+                  field.endDate === ""
                     ? field.startDate + " (Currently Working)"
                     : field.startDate + " - " + field.endDate
                 }
+                careerJourney={field.careerJourney} // Pass the careerJourney to PrintJobs
               />
             ))}
           </div>
@@ -69,7 +67,7 @@ export default function WorkExperience({
   );
 }
 
-function PrintJobs({ position, company, employmentDate }) {
+function PrintJobs({ position, company, employmentDate, careerJourney }) {
   return (
     <div className="border-2 border-solid border-white bg-white text-black p-2 mb-2">
       <p>
@@ -80,6 +78,9 @@ function PrintJobs({ position, company, employmentDate }) {
       </p>
       <p>
         <strong>Period of Employment:</strong> {employmentDate}
+      </p>
+      <p>
+        <strong>Career Journey:</strong> {careerJourney}
       </p>
     </div>
   );

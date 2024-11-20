@@ -7,6 +7,7 @@ function CurriculumTemplate({
   savedSkills,
   savedLang,
   savedEducation,
+  savedExperience
 }) {
   const { fullName, jobTitle, email, phone, city, careerSummary } =
     savedData[0];
@@ -107,17 +108,7 @@ function CurriculumTemplate({
                   </p>
                 </div>
 
-                <div>
-                  <div className="font-semibold">Assistant Hotel Manager</div>
-                  <div>The Seattle Sea Home | Seattle, WA</div>
-                  <div>20XX – 20XX</div>
-                  <p className="mt-2">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Fuga labore, possimus quam saepe enim error ea mollitia
-                    impedit praesentium cumque maiores nostrum. Accusamus sequi
-                    ab placeat itaque nostrum ea quia!
-                  </p>
-                </div>
+                <HandleWorkExperience savedExperience={savedExperience} />
               </div>
 
               <div>
@@ -193,7 +184,6 @@ function HandleLang({ savedLang }) {
 }
 
 function HandleEducation({ savedEducation }) {
-  console.log(savedEducation);
   return (
     <>
       {savedEducation.map((educ) => (
@@ -212,4 +202,26 @@ function HandleEducation({ savedEducation }) {
     </>
   );
 }
+function HandleWorkExperience({ savedExperience }) {
+  console.log(savedExperience);
+  return (
+    <>
+      {savedExperience.map((work) => (
+        <div key={work.id}>
+          <div className="font-semibold">{work.position}</div>
+          <div>{work.company}</div>
+          <div>
+            {work.endDate === ""
+              ? work.startDate + " (In progress)"
+              : work.startDate + " - " + work.endDate}
+          </div>
+          <p className="mt-2">
+            {work.careerJourney}
+          </p>
+        </div>
+      ))}
+    </>
+  );
+}
+
 export default CurriculumTemplate;
