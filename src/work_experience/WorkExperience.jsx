@@ -17,7 +17,7 @@ export default function WorkExperience({
           className="flex flex-col justify-around border-b-2 p-4"
         >
           <div>
-            <div className="input-container grid grid-cols-3 gap-5">
+            <div className="input-container grid grid-cols-2 gap-5">
               {workFields.map((content, index) => (
                 <label key={index}>
                   {content.label}

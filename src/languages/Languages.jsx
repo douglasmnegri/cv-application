@@ -27,7 +27,7 @@ export default function Languages({
                 value={language}
                 placeholder="English"
                 onChange={onChangeLang}
-                className="block border border-gray-300"
+                className="block border border-gray-300 w-[100px]"
               />
             </label>
           </div>

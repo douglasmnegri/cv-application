@@ -13,11 +13,11 @@ function CurriculumTemplate({
     savedData[0];
 
   return (
-    <div className="flex justify-center w-[650px]">
+    <div className="flex bg-gray-100">
       <div className="shadow-lg border border-gray-200 bg-white">
-        <div className="grid grid-rows-4">
-          <div className="bg-pale-yellow text-black p-6 row-span-1 flex justify-around items-center">
-            <div className="mr-14 w-[650px]">
+        <div className="grid grid-rows-4 h-full">
+          <div className="bg-pale-yellow text-black p-6 row-span-1 flex justify-between items-center">
+            <div className="mr-14">
               <h1 className="text-5xl font-bold text-black	leading-snug text-center">
                 {!fullName ? "John M. Doe" : fullName}
                 {/* John M. Doe */}
@@ -27,7 +27,7 @@ function CurriculumTemplate({
                 {/* Software Engineer */}
               </h2>
             </div>
-            <div className="text-sm text-center">
+            <div className="text-sm text-center w-8/12">
               <h2 className="text-black font-bold uppercase text-center">
                 Profile
               </h2>
