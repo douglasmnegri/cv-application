@@ -1,7 +1,8 @@
 import { CiMail } from "react-icons/ci";
 import { CiPhone } from "react-icons/ci";
 import { CiLocationOn } from "react-icons/ci";
-import WorkComponent from "./CurriculumComponents";
+import { WorkComponent } from "./CurriculumComponents";
+import { EducationComponent } from "./CurriculumComponents";
 
 function CurriculumTemplate({
   savedData,
@@ -96,13 +97,12 @@ function CurriculumTemplate({
                 <div className="text-md font-bold uppercase mt-8">
                   Education
                 </div>
-                <p className="mt-4">
-                  Bachelor of Science in Hospitality Management
-                  <br />
-                  Bellows College, June 2024
-                </p>
 
-                <HandleEducation savedEducation={savedEducation} />
+                {savedEducation.length == 0 ? (
+                  <EducationComponent />
+                ) : (
+                  <HandleEducation savedEducation={savedEducation} />
+                )}
               </div>
             </div>
           </div>
@@ -169,7 +169,6 @@ function HandleEducation({ savedEducation }) {
     <>
       {savedEducation.map((educ) => (
         <div key={educ.id}>
-          <div className="text-md font-bold uppercase mt-8">Education</div>
           <p className="mt-4">
             {educ.diploma}
             <br />

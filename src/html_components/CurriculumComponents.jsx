@@ -1,4 +1,4 @@
-export default function WorkComponent() {
+export function WorkComponent() {
   return (
     <>
       <div>
@@ -26,3 +26,17 @@ export default function WorkComponent() {
     </>
   );
 }
+
+export function EducationComponent() {
+  return (
+    <>
+      <p className="mt-4">
+        Bachelor of Science in Hospitality Management
+        <br />
+        Bellows College, June 2024
+      </p>
+    </>
+  );
+}
+
+
