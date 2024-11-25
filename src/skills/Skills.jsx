@@ -1,4 +1,5 @@
 import Container from "../html_components/Container";
+import Button from "../html_components/DeleteButton";
 
 export default function Skills({ field, onSave, onChange, onDelete, skills }) {
   return (
@@ -46,12 +47,7 @@ function PrintSkills({ skill, del }) {
   return (
     <div className="relative border-2 border-solid rounded border-white bg-white text-black mb-2 m-4 p-4">
       <p>{skill}</p>
-      <button
-        onClick={del} // Call the `del` function (which includes the `id`)
-        className="absolute top-[-12px] right-[-12px] text-red-500 font-bold text-xs hover:text-red-700 py-1 px-2"
-      >
-        X
-      </button>
+      <Button onClick={del} />
     </div>
   );
 }

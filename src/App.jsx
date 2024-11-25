@@ -41,6 +41,7 @@ function App() {
     savedExperience,
     handleWorkExperience,
     handleWorkFields,
+    deleteWorkExperience
   } = HandleWorkExperience();
 
   return (
@@ -82,6 +83,7 @@ function App() {
           handleWorkFields={handleWorkFields}
           handleWorkExperience={handleWorkExperience}
           savedExperience={savedExperience}
+          onDeleteWork={deleteWorkExperience}
         />
       </div>
       <div className="col-span-1">

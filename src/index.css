@@ -123,6 +123,15 @@ h1 {
   animation: focus-glow 1.5s ease-in-out forwards;
 }
 
+.delete-button {
+  display: inline-block;
+  transform: scale(0.8);
+}
+
+.delete-button:hover {
+  animation: focus-grow 90ms ease-in-out forwards;
+}
+
 @keyframes focus-glow {
   0% {
     border-bottom-color: #555;
@@ -141,5 +150,23 @@ h1 {
   }
   100% {
     border-bottom-color: var(--red-500);
+  }
+}
+
+@keyframes focus-grow {
+  from {
+    transform: scale(0.8);
+  }
+  60% {
+    transform: scale(0.8);
+  }
+  75% {
+    transform: scale(0.9);
+  }
+  90% {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
   }
 }

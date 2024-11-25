@@ -1,4 +1,5 @@
 import Container from "../html_components/Container";
+import Button from "../html_components/DeleteButton";
 
 export default function Languages({
   language,
@@ -49,10 +50,7 @@ export default function Languages({
             </label>
           </div>
           <div className="flex items-center">
-            <button
-              className="bg-green-500 text-white"
-              onClick={onSaveLang}
-            >
+            <button className="bg-green-500 text-white" onClick={onSaveLang}>
               Add Language
             </button>
           </div>
@@ -88,12 +86,8 @@ function PrintLang({ lang, proficiency, del }) {
       <p>
         {lang} ({proficiency})
       </p>
-      <button
-        onClick={del}
-        className="absolute top-[-12px] right-[-12px] text-red-500 font-bold text-xs hover:text-red-700 py-1 px-2"
-      >
-        X
-      </button>
+
+      <Button onClick={del} />
     </div>
   );
 }

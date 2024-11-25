@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Container from "../html_components/Container";
+import Button from "../html_components/DeleteButton";
 
 export default function WorkExperience({
   workFields,
@@ -8,14 +9,13 @@ export default function WorkExperience({
   handleWorkExperience,
   workedFields,
   savedExperience,
+  onDeleteWork,
 }) {
   return (
     <>
       <Container>
         <h1>Work Experience</h1>
-        <div
-          className="flex flex-col justify-around border-b-2 p-4"
-        >
+        <div className="flex flex-col justify-around border-b-2 p-4">
           <div>
             <div className="input-container grid grid-cols-2 gap-5">
               {workFields.map((content, index) => (
@@ -57,6 +57,7 @@ export default function WorkExperience({
               key={field.id}
               position={field.position}
               company={field.company}
+              onDeleteWork={() => onDeleteWork(field.id)}
               employmentDate={
                 field.endDate === ""
                   ? field.startDate + " (Currently Working)"
@@ -71,9 +72,21 @@ export default function WorkExperience({
   );
 }
 
-function PrintJobs({ position, company, employmentDate, careerJourney }) {
+function PrintJobs({
+  position,
+  company,
+  employmentDate,
+  careerJourney,
+  onDeleteWork,
+}) {
+  const charLimit = 100;
+  const truncatedCareerJourney =
+    careerJourney.length > charLimit
+      ? careerJourney.slice(0, charLimit) + "..."
+      : careerJourney;
+
   return (
-    <div className="border-2 border-solid border-white bg-white text-black p-2 mb-2">
+    <div className="flex justify-center flex-col gap-2 relative border-2 border-solid border-white bg-gray-500 text-white p-4 m-2 bg-opacity-50">
       <p>
         <strong>Position:</strong> {position}
       </p>
@@ -84,8 +97,9 @@ function PrintJobs({ position, company, employmentDate, careerJourney }) {
         <strong>Period of Employment:</strong> {employmentDate}
       </p>
       <p>
-        <strong>Career Journey:</strong> {careerJourney}
+        <strong>Career Journey:</strong> {truncatedCareerJourney}
       </p>
+      <Button onClick={onDeleteWork} />
     </div>
   );
 }
