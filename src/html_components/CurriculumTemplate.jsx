@@ -1,13 +1,14 @@
 import { CiMail } from "react-icons/ci";
 import { CiPhone } from "react-icons/ci";
 import { CiLocationOn } from "react-icons/ci";
+import WorkComponent from "./CurriculumComponents";
 
 function CurriculumTemplate({
   savedData,
   savedSkills,
   savedLang,
   savedEducation,
-  savedExperience
+  savedExperience,
 }) {
   const { fullName, jobTitle, email, phone, city, careerSummary } =
     savedData[0];
@@ -84,31 +85,11 @@ function CurriculumTemplate({
                 Work Experience
               </div>
               <div className="mt-4 space-y-6">
-                <div>
-                  <div className="font-semibold">Assistant Hotel Manager</div>
-                  <div>The Rosehip Hotel | Seattle, WA</div>
-                  <div>20XX – Present</div>
-                  <p className="mt-2">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Eligendi incidunt numquam ipsum omnis officiis atque
-                    obcaecati asperiores? Et, eius beatae consequatur laborum
-                    ut, architecto dolores quidem iste sed sint eligendi!
-                  </p>
-                </div>
-
-                <div>
-                  <div className="font-semibold">Assistant Hotel Manager</div>
-                  <div>The Seattle Sea Home | Seattle, WA</div>
-                  <div>20XX – 20XX</div>
-                  <p className="mt-2">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Fuga labore, possimus quam saepe enim error ea mollitia
-                    impedit praesentium cumque maiores nostrum. Accusamus sequi
-                    ab placeat itaque nostrum ea quia!
-                  </p>
-                </div>
-
-                <HandleWorkExperience savedExperience={savedExperience} />
+                {savedExperience.length == 0 ? (
+                  <WorkComponent />
+                ) : (
+                  <HandleWorkExperience savedExperience={savedExperience} />
+                )}
               </div>
 
               <div>
@@ -215,9 +196,7 @@ function HandleWorkExperience({ savedExperience }) {
               ? work.startDate + " (In progress)"
               : work.startDate + " - " + work.endDate}
           </div>
-          <p className="mt-2">
-            {work.careerJourney}
-          </p>
+          <p className="mt-2">{work.careerJourney}</p>
         </div>
       ))}
     </>

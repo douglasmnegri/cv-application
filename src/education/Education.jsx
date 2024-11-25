@@ -36,7 +36,7 @@ export default function Education({
             ))}
             <div className="col-start-2 flex justify-end">
               <button
-                className="border mt-2 bg-green-500 text-white rounded"
+                className="border mt-4 bg-green-500 text-white rounded"
                 onClick={handleEducation}
               >
                 Save School
@@ -81,7 +81,7 @@ function PrintSchools({ school, date, diploma, onDeleteEduc }) {
       </p>
       <button
         onClick={onDeleteEduc}
-        className="absolute top-[-12px] right-[-12px] text-red-500 font-bold text-xs hover:text-red-700 py-1 px-2"
+        className="absolute top-[-12px] right-[-12px] text-red-500 font-bold text-xs hover:text-red-700 py-2 px-2"
       >
         X
       </button>

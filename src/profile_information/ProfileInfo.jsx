@@ -32,7 +32,7 @@ export default function SignUpForm({ formData, onChange, onSave }) {
       <Container>
         <div>
           <h1>Personal Information</h1>
-          <div className="grid-cols-3 m-2 p-2 gap-2">
+          <div className="grid grid-cols-2 m-2 p-2 gap-2">
             <div className="personal-details">
               <PersonalDetails
                 title="Full Name"
@@ -48,6 +48,14 @@ export default function SignUpForm({ formData, onChange, onSave }) {
                 type="text"
                 name="jobTitle"
                 value={formData.jobTitle}
+                onChange={onChange}
+              />
+              <PersonalDetails
+                title="City"
+                placeholder="New York"
+                type="text"
+                name="city"
+                value={formData.city}
                 onChange={onChange}
               />
             </div>
@@ -69,15 +77,6 @@ export default function SignUpForm({ formData, onChange, onSave }) {
                 onChange={onChange}
               />
             </div>
-            <PersonalDetails
-              title="City"
-              placeholder="New York"
-              type="text"
-              name="city"
-              value={formData.city}
-              onChange={onChange}
-              width="w-[740px]"
-            />
           </div>
           <div className="flex flex-col justify-center align-middle mx-8 my-3">
             <label htmlFor="career-summary" className="text-white mb-1">
