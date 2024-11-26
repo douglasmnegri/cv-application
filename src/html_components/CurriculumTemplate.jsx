@@ -3,6 +3,8 @@ import { CiPhone } from "react-icons/ci";
 import { CiLocationOn } from "react-icons/ci";
 import { WorkComponent } from "./CurriculumComponents";
 import { EducationComponent } from "./CurriculumComponents";
+import { useRef } from "react";
+import html2pdf from "html2pdf.js/dist/html2pdf.bundle.min.js";
 
 function CurriculumTemplate({
   savedData,
@@ -14,10 +16,24 @@ function CurriculumTemplate({
   const { fullName, jobTitle, email, phone, city, careerSummary } =
     savedData[0];
 
+  const cvRef = useRef();
+
+  const handleDownload = () => {
+    const options = {
+      margin: 0,
+      filename: `${fullName || "John_M_Doe"}_CV.pdf`,
+      image: { type: "jpeg", quality: 1 },
+      html2canvas: { scale: 3, scrollX: 0, scrollY: 0 },
+      jsPDF: { unit: "pt", format: "a4", orientation: "portrait" },
+    };
+
+    html2pdf().set(options).from(cvRef.current).save();
+  };
+
   return (
-    <div className="flex bg-gray-100">
-      <div className="shadow-lg border border-gray-200 bg-white">
-        <div className="grid grid-rows-4 h-full">
+    <div className="flex flex-col">
+      <div className="shadow-lg border border-gray-200 bg-white" ref={cvRef}>
+        <div className="grid grid-rows-4 h-auto">
           <div className="bg-pale-yellow text-black p-6 row-span-1 flex justify-between items-center">
             <div className="mr-14">
               <h1 className="text-5xl font-bold text-black	leading-snug text-center">
@@ -106,7 +122,7 @@ function CurriculumTemplate({
               </div>
             </div>
           </div>
-          <div className=" bg-pale-yellow text-black p-6">
+          <div className=" bg-pale-yellow text-black pt-4 pb-4">
             <div className="flex justify-around">
               <Contact
                 IconComponent={CiPhone}
@@ -127,6 +143,12 @@ function CurriculumTemplate({
           </div>
         </div>
       </div>
+      <button
+        onClick={handleDownload}
+        className="mt-6 px-4 py-2 border  bg-green-500 text-white rounded"
+      >
+        Download PDF
+      </button>
     </div>
   );
 }

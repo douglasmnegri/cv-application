@@ -45,7 +45,7 @@ export default function Skills({ field, onSave, onChange, onDelete, skills }) {
 
 function PrintSkills({ skill, del }) {
   return (
-    <div className="relative border-2 border-solid rounded border-white bg-white text-black mb-2 m-4 p-4">
+    <div className="relative border-2 border-solid rounded border-white bg-gray-500 text-white p-4 m-2 bg-opacity-50">
       <p>{skill}</p>
       <Button onClick={del} />
     </div>

@@ -82,7 +82,7 @@ export default function Languages({
 
 function PrintLang({ lang, proficiency, del }) {
   return (
-    <div className="relative border-2 border-solid rounded border-white bg-white text-black mb-2 m-4 p-4">
+    <div className="relative border-2 border-solid rounded border-white bg-gray-500 text-white p-4 m-2 bg-opacity-50">
       <p>
         {lang} ({proficiency})
       </p>

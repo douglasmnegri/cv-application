@@ -70,7 +70,7 @@ export default function Education({
 
 function PrintSchools({ school, date, diploma, onDeleteEduc }) {
   return (
-    <div className="relative border-2 border-solid border-white bg-white text-black mb-2  m-4 p-4">
+    <div className="relative border-2 border-solid border-white bg-gray-500 text-white p-4 m-2 bg-opacity-50">
       <p>
         <strong>Institution:</strong> {school}
       </p>
