@@ -1,8 +1,39 @@
-# React + Vite
+# CV Builder Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based CV builder application that allows you to create, customize, and print your CV with ease. This project is built with **Vite** and styled using **TailwindCSS**.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Personal Information**: Add details like your full name, email, job title, phone number, and city.
+- **Education**: You can list your educational background with details like degrees and institutions.
+- **Skills**
+- **Languages**
+- **Work Experience**
+- **Print Your CV**
+
+## Technologies Used
+
+- **Vite**
+- **React**
+- **TailwindCSS**
+- **React Icons**
+- **html2pdf.js**
+- **uuid**
+
+## Installation and Setup
+
+To get started with this project, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Install NPM packages
+   ```bash
+   npm install
+   ```
+
+3. Run your project
+   ```bash
+   npm run dev
+   ```
